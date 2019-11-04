@@ -14,12 +14,27 @@ npm install react-tracking-bing --save
 
 # Usage
 
-### With npm
-
-Initializing BingTracking and tracking pageviews:
+Before tracking any page views or events the tracker needs to be imported and initialized with the custom tracking id:
 
 ```js
 import BingTracking from 'react-tracking-bing';
 BingTracking.initialize('TRACKING_ID');
-BingTracking.pageview();
+```
+
+After initializing page views can be tracked like this:
+
+```js
+BingTracking.trackPageview();
+```
+
+There is also the option to track custom events with event action, category, label and value:
+
+```js
+BingTracking.trackEvent(eventAction, eventCategory, eventLabel, eventValue);
+```
+
+There is also a method to expose the raw uetq tracking object from the window:
+
+```js
+BingTracking.getTracker();
 ```

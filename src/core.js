@@ -5,6 +5,8 @@
  * @author Alexander Barge <alexander.barge@gmail.com>
  */
 
+const tracker = window.uetq || [];
+
 export function initialize(newTrackerId) {
   /* eslint-disable */
   (function(w, d, t, r, u) {
@@ -28,12 +30,30 @@ export function initialize(newTrackerId) {
   /* eslint-enable */
 }
 
-export function pageview() {
-  window.uetq = window.uetq || [];
-  window.uetq.push('pageLoad');
+export function getTracker() {
+  return tracker;
+}
+
+export function trackPageview() {
+  tracker.push('pageLoad');
+}
+
+export function trackEvent(
+  eventAction = '',
+  eventCategory = '',
+  eventLabel = '',
+  eventValue = '',
+) {
+  tracker.push('event', eventAction, {
+    event_category: eventCategory,
+    event_label: eventLabel,
+    event_value: eventValue,
+  });
 }
 
 export default {
   initialize,
-  pageview,
+  getTracker,
+  trackPageview,
+  trackEvent,
 };
