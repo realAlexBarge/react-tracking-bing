@@ -1,6 +1,6 @@
 {
   "name": "react-tracking-bing",
-  "version": "0.3.1",
+  "version": "0.3.3",
   "description": "React Bing Tracking Module",
   "main": "./lib/index.js",
   "scripts": {
