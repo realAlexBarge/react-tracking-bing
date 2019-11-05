@@ -5,7 +5,26 @@
  * @author Alexander Barge <alexander.barge@gmail.com>
  */
 
-const tracker = window.uetq || [];
+export function getTracker() {
+  return window.uetq || [];
+}
+
+export function trackPageview() {
+  getTracker().push('pageLoad');
+}
+
+export function trackEvent(
+  eventAction = '',
+  eventCategory = '',
+  eventLabel = '',
+  eventValue = '',
+) {
+  getTracker().push('event', eventAction, {
+    event_category: eventCategory,
+    event_label: eventLabel,
+    event_value: eventValue,
+  });
+}
 
 export function initialize(newTrackerId) {
   /* eslint-disable */
@@ -28,27 +47,6 @@ export function initialize(newTrackerId) {
       i.parentNode.insertBefore(n, i);
   })(window, document, 'script', '//bat.bing.com/bat.js', 'uetq');
   /* eslint-enable */
-}
-
-export function getTracker() {
-  return tracker;
-}
-
-export function trackPageview() {
-  tracker.push('pageLoad');
-}
-
-export function trackEvent(
-  eventAction = '',
-  eventCategory = '',
-  eventLabel = '',
-  eventValue = '',
-) {
-  tracker.push('event', eventAction, {
-    event_category: eventCategory,
-    event_label: eventLabel,
-    event_value: eventValue,
-  });
 }
 
 export default {
