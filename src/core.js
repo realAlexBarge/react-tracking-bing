@@ -17,12 +17,12 @@ export function trackEvent(
   eventAction = '',
   eventCategory = '',
   eventLabel = '',
-  eventValue = '',
+  eventValue = 0,
 ) {
   getTracker().push('event', eventAction, {
     event_category: eventCategory,
     event_label: eventLabel,
-    event_value: eventValue,
+    event_value: parseInt(eventValue, 10),
   });
 }
 
